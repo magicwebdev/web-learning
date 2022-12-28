@@ -1,7 +1,74 @@
+html {
+  box-sizing: border-box;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  background-color: #f3f6fd;
+}
+
+.app {
+  display: flex;
+}
+.app-navigation {
+  padding: 30px;
+  min-height: 100vh;
+  background-color: #fbfaff;
+}
+.app-logo {
+  margin-bottom: 50px;
+}
+
+.hobbit-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 46px;
+    height: 45px;
+    background: #ffffff;
+    box-shadow: 0px 8px 14px rgba(62, 107, 224, 0.12);
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      background: #6A6AFB;
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+    &--active {
+      background: #5051f9;
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+    &--add {
+      background: none;
+      border: 1px solid #CAD5FF;
+      &:hover {
+        background: #CAD5FF;
+      }
+    }
+  }
+}
+
+.app-content {
 }
