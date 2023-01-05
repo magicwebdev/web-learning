@@ -18,25 +18,50 @@ body {
   font-size: 14px;
   line-height: 16px;
   background-color: #f3f6fd;
+  color: #000000;
 }
 
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
+  grid-template-columns: -webkit-min-content minmax(300px, 900px);
+  grid-template-columns: min-content minmax(300px, 900px);
+  grid-template-rows: -webkit-min-content 1fr;
+  grid-template-rows: min-content 1fr;
 }
 
 .app-navigation {
   padding: 30px;
   min-height: 100vh;
   background-color: #fbfaff;
+  grid-row: span 2;
 }
 
 .app-logo {
   margin-bottom: 50px;
 }
 
-.hobbit-list {
+.app-header {
+  padding: 45px 40px 40px 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app-content {
+  padding: 0 40px 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 54px;
+  row-gap: 12px;
+}
+
+.habbit-list {
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -50,7 +75,7 @@ body {
           align-items: center;
   gap: 25px;
 }
-.hobbit-list__btn {
+.habbit-list__btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,24 +96,160 @@ body {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.hobbit-list__btn:hover {
-  background: #6A6AFB;
+.habbit-list__btn:hover {
+  background: #6a6afb;
 }
-.hobbit-list__btn:hover img {
+.habbit-list__btn:hover img {
   -webkit-filter: brightness(0) invert(1);
           filter: brightness(0) invert(1);
 }
-.hobbit-list__btn--active {
+.habbit-list__btn--active {
   background: #5051f9;
 }
-.hobbit-list__btn--active img {
+.habbit-list__btn--active img {
   -webkit-filter: brightness(0) invert(1);
           filter: brightness(0) invert(1);
 }
-.hobbit-list__btn--add {
+.habbit-list__btn--add {
   background: none;
-  border: 1px solid #CAD5FF;
+  border: 1px solid #cad5ff;
 }
-.hobbit-list__btn--add:hover {
-  background: #CAD5FF;
+.habbit-list__btn--add:hover {
+  background: #cad5ff;
+}
+
+.habbit-title {
+  font-size: 30px;
+  line-height: 33px;
+}
+
+.habbit-progress {
+  width: 235px;
+}
+.habbit-progress__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 12px;
+}
+.habbit-progress__name {
+  color: #232360;
+}
+.habbit-progress__percent {
+  font-size: 12px;
+  line-height: 13px;
+  color: #768396;
+}
+.habbit-progress__bar {
+  width: 100%;
+  height: 5px;
+  background: #e6e9ed;
+  border-radius: 4px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.habbit-progress__bar--cover {
+  width: 0%;
+  background: #5051f9;
+}
+
+.habbit {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #ffffff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+}
+.habbit__day {
+  min-width: 130px;
+  background: #fbfaff;
+  padding: 19px 0 19px 40px;
+  border-right: 1px solid #e7ebfb;
+  border-radius: 10px 0 0 10px;
+  font-weight: 500;
+}
+.habbit__comment {
+  padding-left: 23px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #23235f;
+}
+.habbit__del {
+  margin-left: auto;
+  margin-right: 7px;
+  background: transparent url("../images/basket.svg") center no-repeat;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.habbit__del:hover {
+  background-color: #EDECFE;
+}
+
+.habbit-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+.habbit-form__input {
+  position: relative;
+  margin: 0 14px 0 24px;
+  padding: 0 20px 0 48px;
+  width: 100%;
+  font: inherit;
+  border: 1px solid #E7EBFB;
+  border-radius: 9px;
+  background: url("../images/comment.svg") no-repeat 10px 10px;
+  outline: none;
+}
+.habbit-form__input::-webkit-input-placeholder {
+  color: #8899A8;
+}
+.habbit-form__input::-moz-placeholder {
+  color: #8899A8;
+}
+.habbit-form__input:-ms-input-placeholder {
+  color: #8899A8;
+}
+.habbit-form__input::-ms-input-placeholder {
+  color: #8899A8;
+}
+.habbit-form__input::placeholder {
+  color: #8899A8;
+}
+.habbit-form__btn {
+  margin-right: 5px;
+  font: inherit;
+  width: 120px;
+  height: 39px;
+  background: #EDECFE;
+  border-radius: 9px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 14px;
+  color: #5051F9;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.habbit-form__btn:hover {
+  background: #5051f9;
+  color: #fff;
 }

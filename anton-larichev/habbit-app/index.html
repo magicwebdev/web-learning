@@ -9,39 +9,57 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="icon" href="images/favicon.ico">
   <title>Habbit App</title>
 </head>
 
 <body class="app">
   <nav class="app-navigation">
     <img src="images/logo.svg" alt="Логотип" class="app-logo">
-    <ul class="hobbit-list">
-      <li class="hobbit-list__item">
-        <button class="hobbit-list__btn hobbit-list__btn--active">
-          <img src="images/sport.svg" alt="Привычка" class="hobbit-list__img">
+    <ul class="habbit-list">
+      <li class="habbit-list__item">
+        <button class="habbit-list__btn habbit-list__btn--active">
+          <img src="images/sport.svg" alt="Привычка" class="habbit-list__img">
         </button>
       </li>
-      <li class="hobbit-list__item">
-        <button class="hobbit-list__btn">
-          <img src="images/water.svg" alt="Привычка" class="hobbit-list__img">
+      <li class="habbit-list__item">
+        <button class="habbit-list__btn">
+          <img src="images/food.svg" alt="Привычка" class="habbit-list__img">
         </button>
       </li>
-      <li class="hobbit-list__item">
-        <button class="hobbit-list__btn">
-          <img src="images/food.svg" alt="Привычка" class="hobbit-list__img">
-        </button>
-      </li>
-      <li class="hobbit-list__item">
-        <button class="hobbit-list__btn hobbit-list__btn--add">
-          <img src="images/add.svg" alt="Добавить привычку" class="hobbit-add__img">
+      <li class="habbit-list__item">
+        <button class="habbit-list__btn habbit-list__btn--add">
+          <img src="images/add.svg" alt="Добавить привычку" class="habbit-add__img">
         </button>
       </li>
     </ul>
   </nav>
-  <section class="app-content">
-
-  </section>
-
+  <header class="app-header">
+    <h1 class="habbit-title"></h1>
+    <div class="habbit-progress">
+      <div class="habbit-progress__text">
+        <span class="habbit-progress__name">Прогресс</span>
+        <span class="habbit-progress__percent"></span>
+      </div>
+      <div class="habbit-progress__bar">
+        <div class="habbit-progress__bar habbit-progress__bar--cover"></div>
+      </div>
+    </div>
+  </header>
+  <main class="app-content">
+    <div class="habbit">
+      <p class="habbit__day">День 1</p>
+      <p class="habbit__comment">Первый подход всегда даётся тяжело</p>
+      <button class="habbit__del"></button>
+    </div>
+    <div class="habbit">
+      <p class="habbit__day">День 2</p>
+      <form action="" class="habbit-form">
+        <input type="text" class="habbit-form__input" placeholder="Комментарий">
+        <button class="habbit-form__btn">Готово</button>
+      </form>
+    </div>
+  </main>
   <script src="scripts/main.js"></script>
 </body>
 
