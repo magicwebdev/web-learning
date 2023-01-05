@@ -17,7 +17,6 @@
   <nav class="app-navigation">
     <img src="images/logo.svg" alt="Логотип" class="app-logo">
     <ul class="habit-list">
-
       <li class="habit-list__item">
         <button class="habit-list__btn habit-list__btn--add">
           <img src="images/add.svg" alt="Добавить привычку" class="habit-add__img">
@@ -26,7 +25,7 @@
     </ul>
   </nav>
   <header class="app-header">
-    <h1 class="habit-title"></h1>
+    <h1 class="habit-title">Название привычки</h1>
     <div class="habit-progress">
       <div class="habit-progress__text">
         <span class="habit-progress__name">Прогресс</span>
@@ -38,16 +37,12 @@
     </div>
   </header>
   <main class="app-content">
-    <div class="habit">
-      <p class="habit__day">День 1</p>
-      <p class="habit__comment">Первый подход всегда даётся тяжело</p>
-      <button class="habit__del"></button>
-    </div>
-    <div class="habit">
-      <p class="habit__day">День 2</p>
-      <form action="" class="habit-form">
-        <input type="text" class="habit-form__input" placeholder="Комментарий">
-        <button class="habit-form__btn">Готово</button>
+    <ul class="day-list"></ul>
+    <div class="day">
+      <p class="day__number">День №</p>
+      <form action="#" class="day-form">
+        <input type="text" class="day-form__input" placeholder="Комментарий">
+        <button class="day-form__btn">Готово</button>
       </form>
     </div>
   </main>

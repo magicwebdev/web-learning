@@ -11,7 +11,10 @@ const page = {
     progressBar: document.querySelector('.habit-progress__bar--cover'),
     progressPersent: document.querySelector('.habit-progress__percent'),
   },
-  content: {},
+  content: {
+    dayList: document.querySelector('.day-list'),
+    newDay: document.querySelector('.day__number')
+  }
 };
 
 /* utils */
@@ -72,7 +75,16 @@ function rerenderHeader(activeHabit) {
 }
 
 function rerenderContent(activeHabit) {
-
+  page.content.dayList.innerHTML = '';
+  for (const index in activeHabit.days) {
+    const dayHabitItem = document.createElement('li');
+    dayHabitItem.classList.add('day');
+    dayHabitItem.innerHTML = `<p class="day__number">День ${Number(index) + 1}</p>
+    <p class="day__comment">${activeHabit.days[index].comment}</p>
+    <button class="day__del"></button>`;
+    page.content.dayList.appendChild(dayHabitItem);
+  }
+  page.content.newDay.innerText = `День ${activeHabit.days.length + 1}`;
 }
 
 function rerender(activeHabitId) {
