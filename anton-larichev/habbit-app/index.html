@@ -10,53 +10,44 @@
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="icon" href="images/favicon.ico">
-  <title>Habbit App</title>
+  <title>HabbitApp</title>
 </head>
 
 <body class="app">
   <nav class="app-navigation">
     <img src="images/logo.svg" alt="Логотип" class="app-logo">
-    <ul class="habbit-list">
-      <li class="habbit-list__item">
-        <button class="habbit-list__btn habbit-list__btn--active">
-          <img src="images/sport.svg" alt="Привычка" class="habbit-list__img">
-        </button>
-      </li>
-      <li class="habbit-list__item">
-        <button class="habbit-list__btn">
-          <img src="images/food.svg" alt="Привычка" class="habbit-list__img">
-        </button>
-      </li>
-      <li class="habbit-list__item">
-        <button class="habbit-list__btn habbit-list__btn--add">
-          <img src="images/add.svg" alt="Добавить привычку" class="habbit-add__img">
+    <ul class="habit-list">
+
+      <li class="habit-list__item">
+        <button class="habit-list__btn habit-list__btn--add">
+          <img src="images/add.svg" alt="Добавить привычку" class="habit-add__img">
         </button>
       </li>
     </ul>
   </nav>
   <header class="app-header">
-    <h1 class="habbit-title"></h1>
-    <div class="habbit-progress">
-      <div class="habbit-progress__text">
-        <span class="habbit-progress__name">Прогресс</span>
-        <span class="habbit-progress__percent"></span>
+    <h1 class="habit-title"></h1>
+    <div class="habit-progress">
+      <div class="habit-progress__text">
+        <span class="habit-progress__name">Прогресс</span>
+        <span class="habit-progress__percent"></span>
       </div>
-      <div class="habbit-progress__bar">
-        <div class="habbit-progress__bar habbit-progress__bar--cover"></div>
+      <div class="habit-progress__bar">
+        <div class="habit-progress__bar habit-progress__bar--cover"></div>
       </div>
     </div>
   </header>
   <main class="app-content">
-    <div class="habbit">
-      <p class="habbit__day">День 1</p>
-      <p class="habbit__comment">Первый подход всегда даётся тяжело</p>
-      <button class="habbit__del"></button>
+    <div class="habit">
+      <p class="habit__day">День 1</p>
+      <p class="habit__comment">Первый подход всегда даётся тяжело</p>
+      <button class="habit__del"></button>
     </div>
-    <div class="habbit">
-      <p class="habbit__day">День 2</p>
-      <form action="" class="habbit-form">
-        <input type="text" class="habbit-form__input" placeholder="Комментарий">
-        <button class="habbit-form__btn">Готово</button>
+    <div class="habit">
+      <p class="habit__day">День 2</p>
+      <form action="" class="habit-form">
+        <input type="text" class="habit-form__input" placeholder="Комментарий">
+        <button class="habit-form__btn">Готово</button>
       </form>
     </div>
   </main>

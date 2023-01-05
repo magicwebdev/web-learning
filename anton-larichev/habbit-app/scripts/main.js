@@ -1,71 +1,92 @@
 'use strict';
 
-let habbits = [];
-const HABBIT_KEY = 'HABBIT_KEY';
+let habits = [];
+const HABIT_KEY = 'HABIT_KEY';
 
 /* description page */
 const page = {
-  menu: document.querySelector('.habbit-list'),
+  menu: document.querySelector('.habit-list'),
   header: {
-    titleHabbit: document.querySelector('.habbit-title'),
-    progressBar: document.querySelector('.habbit-progress__bar--cover'),
-    progressPersent: document.querySelector('.habbit-progress__percent')
+    titlehabit: document.querySelector('.habit-title'),
+    progressBar: document.querySelector('.habit-progress__bar--cover'),
+    progressPersent: document.querySelector('.habit-progress__percent'),
   },
-  content: {
-
-  }
+  content: {},
 };
 
 /* utils */
 // загружает данные из LocalStorage
 function loadData() {
-  const habbitsString = localStorage.getItem(HABBIT_KEY);
-  const habbitArray = JSON.parse(habbitsString);
-  if (Array.isArray(habbitArray)) {
-    habbits = habbitArray;
+  const habitsString = localStorage.getItem(HABIT_KEY);
+  const habitsArray = JSON.parse(habitsString);
+  if (Array.isArray(habitsArray)) {
+    habits = habitsArray;
   }
 }
 // сохраняет данные в LocalStorag
 function saveData() {
-  localStorage.setItem(HABBIT_KEY, habbits);
+  localStorage.setItem(HABIT_KEY, habits);
 }
 
 // считает процент выполнения привычки
-function calculatePercent(activeHabbit) {
-  const percent = (activeHabbit.days.length / activeHabbit.target * 100).toFixed(0);
+function calculatePercent(activeHabit) {
+  const percent = (
+    (activeHabit.days.length / activeHabit.target) *
+    100
+  ).toFixed(0);
   return percent > 100 ? 100 : percent;
 }
 
 /* render */
-function rerenderMenu(activeHabbit) {
-
-}
-
-function rerenderHeader(activeHabbit) {
-  page.header.titleHabbit.innerText = activeHabbit.name;
-  const percentHabbit = calculatePercent(activeHabbit);
-  page.header.progressPersent.innerText = `${percentHabbit}%`;
-  page.header.progressBar.setAttribute('style', `width:${percentHabbit}%`);
-}
-
-function rerenderContent(activeHabbit) {
-  for (const habbit of habbits) {
-    // const existedHabbit
+function rerenderMenu(activeHabit) {
+  for (const habit of habits) {
+    const habitInMenu = document.querySelector(`[habit-id="${habit.id}"]`);
+    if (!habitInMenu) {
+      // добавление привычки в меню
+      const habitMenuItem = document.createElement('li');
+      habitMenuItem.classList.add('habit-list__item');
+      habitMenuItem.setAttribute('habit-id', habit.id);
+      habitMenuItem.innerHTML = `<button class="habit-list__btn">
+      <img src="images/${habit.icon}.svg" alt="Привычка" class="habit-list__img">
+      </button>`;
+      habitMenuItem.addEventListener('click', () => rerender(habit.id));
+      if (habit.id === activeHabit.id) {
+        habitMenuItem.classList.add('habit-list__item--active');
+      }
+      page.menu.prepend(habitMenuItem);
+      continue;
+    }
+    if (habit.id === activeHabit.id) {
+      habitInMenu.classList.add('habit-list__item--active');
+    } else {
+      habitInMenu.classList.remove('habit-list__item--active');
+    }
   }
 }
 
-function rerender(activeHabbitId) {
-  const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
-  if (!activeHabbit) {
+function rerenderHeader(activeHabit) {
+  page.header.titlehabit.innerText = activeHabit.name;
+  const percenthabit = calculatePercent(activeHabit);
+  page.header.progressPersent.innerText = `${percenthabit}%`;
+  page.header.progressBar.setAttribute('style', `width:${percenthabit}%`);
+}
+
+function rerenderContent(activeHabit) {
+
+}
+
+function rerender(activeHabitId) {
+  const activeHabit = habits.find((habit) => habit.id === activeHabitId);
+  if (!activeHabit) {
     return;
   }
-  rerenderMenu(activeHabbit);
-  rerenderHeader(activeHabbit);
-  rerenderContent(activeHabbit);
+  rerenderMenu(activeHabit);
+  rerenderHeader(activeHabit);
+  rerenderContent(activeHabit);
 }
 
 /* initialization */
 (() => {
   loadData();
-  rerender(habbits[0].id);
+  rerender(habits.at(-1).id);
 })();

@@ -47,12 +47,18 @@ body {
   row-gap: 12px;
 }
 
-.habbit-list {
+.habit-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
+  &__item--active .habit-list__btn {
+    background: #5051f9;
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
   &__btn {
     display: flex;
     justify-content: center;
@@ -71,12 +77,6 @@ body {
         filter: brightness(0) invert(1);
       }
     }
-    &--active {
-      background: #5051f9;
-      img {
-        filter: brightness(0) invert(1);
-      }
-    }
     &--add {
       background: none;
       border: 1px solid #cad5ff;
@@ -87,11 +87,11 @@ body {
   }
 }
 
-.habbit-title {
+.habit-title {
   font-size: 30px;
   line-height: 33px;
 }
-.habbit-progress {
+.habit-progress {
   width: 235px;
   &__text {
     display: flex;
@@ -119,7 +119,7 @@ body {
   }
 }
 
-.habbit {
+.habit {
   height: 100%;
   display: flex;
   background: #ffffff;
@@ -156,7 +156,7 @@ body {
   }
 }
 
-.habbit-form {
+.habit-form {
   display: flex;
   justify-content: space-between;
   width: 100%;
