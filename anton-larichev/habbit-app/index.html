@@ -18,7 +18,7 @@
     <img src="images/logo.svg" alt="Логотип" class="app-logo">
     <ul class="habit-list">
       <li class="habit-list__item">
-        <button class="habit-list__btn habit-list__btn--add">
+        <button class="habit-list__btn habit-list__btn--add" title="Добавить новую привычку">
           <img src="images/add.svg" alt="Добавить привычку" class="habit-add__img">
         </button>
       </li>
@@ -29,7 +29,7 @@
     <div class="habit-progress">
       <div class="habit-progress__text">
         <span class="habit-progress__name">Прогресс</span>
-        <span class="habit-progress__percent"></span>
+        <span class="habit-progress__percent">0%</span>
       </div>
       <div class="habit-progress__bar">
         <div class="habit-progress__bar habit-progress__bar--cover"></div>
@@ -40,9 +40,9 @@
     <ul class="day-list"></ul>
     <div class="day">
       <p class="day__number">День №</p>
-      <form action="#" class="day-form">
-        <input type="text" class="day-form__input" placeholder="Комментарий">
-        <button class="day-form__btn">Готово</button>
+      <form action="" class="day-form">
+        <input name="comment" type="text" class="day-form__input" placeholder="Комментарий">
+        <button class="day-form__btn" type="submit">Готово</button>
       </form>
     </div>
   </main>

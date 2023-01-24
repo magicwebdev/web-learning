@@ -176,6 +176,9 @@ body {
     &::placeholder {
       color: #8899A8;
     }
+    &.error {
+      border-color: lightsalmon;
+    }
   }
   &__btn {
     margin-right: 5px;

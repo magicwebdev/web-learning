@@ -236,6 +236,9 @@ body {
 .day-form__input::placeholder {
   color: #8899A8;
 }
+.day-form__input.error {
+  border-color: lightsalmon;
+}
 .day-form__btn {
   margin-right: 5px;
   font: inherit;
