@@ -5,21 +5,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="icon" href="images/favicon.ico">
+  <link href="styles/main.css" rel="stylesheet">
+  <link href="images/favicon.ico" rel="icon">
   <title>HabbitApp</title>
 </head>
 
 <body class="app">
   <nav class="app-navigation">
-    <img src="images/logo.svg" alt="Логотип" class="app-logo">
+    <img class="app-logo" src="images/logo.svg" alt="Логотип">
     <ul class="habit-list">
       <li class="habit-list__item">
         <button class="habit-list__btn habit-list__btn--add" title="Добавить новую привычку">
-          <img src="images/add.svg" alt="Добавить привычку" class="habit-add__img">
+          <img class="habit-add__img" src="images/add.svg" alt="Добавить привычку">
         </button>
       </li>
     </ul>
@@ -40,12 +40,36 @@
     <ul class="day-list"></ul>
     <div class="day">
       <p class="day__number">День №</p>
-      <form action="" class="day-form">
-        <input name="comment" type="text" class="day-form__input" placeholder="Комментарий">
-        <button class="day-form__btn" type="submit">Готово</button>
+      <form class="day__form form">
+        <input class="form__input" name="comment" type="text" placeholder="Комментарий">
+        <button class="form__btn" type="submit">Готово</button>
       </form>
     </div>
   </main>
+  <div class="cover cover--hidden">
+    <div class="popup">
+      <button class="popup__close"></button>
+      <h2 class="popup__title">Новая привычка</h2>
+      <p class="popup__label">Иконка</p>
+      <div class="popup__icons">
+        <button class="popup__icon-btn popup__icon-btn--active" name="sport" title="Спорт">
+          <img class="popup__icon-img" src="images/sport.svg" alt="Спорт">
+        </button>
+        <button class="popup__icon-btn" name="water" title="Вода">
+          <img class="popup__icon-img" src="images/water.svg" alt="Вода">
+        </button>
+        <button class="popup__icon-btn" name="food" title="Еда">
+          <img class="popup__icon-img" src="images/food.svg" alt="Еда">
+        </button>
+      </div>
+      <form class="popup__form form">
+        <input class="form__input" name="name" type="text" placeholder="Название">
+        <input class="form__input" name="icon" type="text" placeholder="Иконка" value="sport" hidden>
+        <input class="form__input" name="target" type="number" placeholder="Цель в днях">
+        <button class="form__btn" type="submit">Добавить</button>
+      </form>
+    </div>
+  </div>
   <script src="scripts/main.js"></script>
 </body>
 

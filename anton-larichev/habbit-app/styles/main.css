@@ -200,8 +200,12 @@ body {
 .day__del:hover {
   background-color: #EDECFE;
 }
+.day__form input {
+  background: url("../images/comment.svg") no-repeat 10px 10px;
+  margin: 0 14px 0 24px;
+}
 
-.day-form {
+.form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,36 +214,35 @@ body {
           justify-content: space-between;
   width: 100%;
 }
-.day-form__input {
+.form__input {
   position: relative;
-  margin: 0 14px 0 24px;
   padding: 0 20px 0 48px;
   width: 100%;
   font: inherit;
   border: 1px solid #E7EBFB;
   border-radius: 9px;
-  background: url("../images/comment.svg") no-repeat 10px 10px;
+  min-height: 40px;
   outline: none;
 }
-.day-form__input::-webkit-input-placeholder {
+.form__input::-webkit-input-placeholder {
   color: #8899A8;
 }
-.day-form__input::-moz-placeholder {
+.form__input::-moz-placeholder {
   color: #8899A8;
 }
-.day-form__input:-ms-input-placeholder {
+.form__input:-ms-input-placeholder {
   color: #8899A8;
 }
-.day-form__input::-ms-input-placeholder {
+.form__input::-ms-input-placeholder {
   color: #8899A8;
 }
-.day-form__input::placeholder {
+.form__input::placeholder {
   color: #8899A8;
 }
-.day-form__input.error {
+.form__input.error {
   border-color: lightsalmon;
 }
-.day-form__btn {
+.form__btn {
   margin-right: 5px;
   font: inherit;
   width: 120px;
@@ -255,7 +258,125 @@ body {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
-.day-form__btn:hover {
+.form__btn:hover {
   background: #5051f9;
   color: #fff;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+}
+.cover--hidden {
+  display: none;
+}
+
+.popup {
+  position: relative;
+  max-width: 424px;
+  padding: 30px 24px;
+  width: 100%;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+          box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+  border-radius: 10px;
+  text-align: center;
+}
+.popup__close {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: transparent url("../images/cross.svg") center no-repeat;
+  border: none;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+.popup__title {
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+.popup__label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #768396;
+  margin-bottom: 10px;
+}
+.popup__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+.popup__icon-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 46px;
+  height: 45px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #5051F9;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.popup__icon-btn:hover {
+  background: #6a6afb;
+}
+.popup__icon-btn:hover img {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+.popup__icon-btn--active {
+  background: #5051F9;
+  border: 1px solid #5051F9;
+}
+.popup__icon-btn--active img {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+.popup__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.popup__form input {
+  padding-left: 20px;
+}
+.popup__form button {
+  margin-top: 10px;
+  margin-right: 0;
 }

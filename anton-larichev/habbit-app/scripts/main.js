@@ -7,6 +7,7 @@ let currentActiveHabbitId;
 /* description page */
 const page = {
   menu: document.querySelector('.habit-list'),
+  addBtn: document.querySelector('.habit-list__btn--add'),
   header: {
     titleHabit: document.querySelector('.habit-title'),
     progressBar: document.querySelector('.habit-progress__bar--cover'),
@@ -14,13 +15,15 @@ const page = {
   },
   content: {
     dayList: document.querySelector('.day-list'),
-    newDay: document.querySelector('.day__number')
+    newDay: document.querySelector('.day__number'),
+    form: document.querySelector('.day__form'),
   },
-  form: document.querySelector('.day-form'),
-  // form: {
-  //   input: document.querySelector('.day-form__input'),
-  //   button: document.querySelector('.day-form__btn')
-  // }
+  popup: {
+    cover: document.querySelector('.cover'),
+    close: document.querySelector('.popup__close'),
+    icons: document.querySelectorAll('.popup__icon-btn'),
+    form: document.querySelector('.popup__form'),
+  },
 };
 
 /* utils */
@@ -39,11 +42,41 @@ function saveData() {
 
 // считает процент выполнения привычки
 function calculatePercent(activeHabit) {
-  const percent = (
-    (activeHabit.days.length / activeHabit.target) *
-    100
-  ).toFixed(0);
+  const percent = ((activeHabit.days.length / activeHabit.target) * 100).toFixed(0);
   return percent > 100 ? 100 : percent;
+}
+
+// показывает/скрывает попап
+function togglePopup() {
+  page.popup.cover.classList.toggle('cover--hidden');
+}
+
+// очищает поля формы
+function resetForm(form, fields) {
+  for (const field of fields) {
+    form[field].value = '';
+  }
+}
+
+// проверяет поля формы и возращает объект с данными формы
+function validateForm(form, fields) {
+  const dataForm = new FormData(form);
+  const result = {};
+  let isValidForm = true;
+  for (const field of fields) {
+    form[field].classList.remove('error');
+    const fieldValue = dataForm.get(field);
+    if (!fieldValue) {
+      form[field].classList.add('error');
+    }
+    result[field] = fieldValue;
+  }
+  for (const field of fields) {
+    if (!result[field]) {
+      isValidForm = false;
+    }
+  }
+  return isValidForm ? result : null;
 }
 
 /* render */
@@ -85,7 +118,9 @@ function rerenderContent(activeHabit) {
   for (const index in activeHabit.days) {
     const dayHabitItem = document.createElement('li');
     dayHabitItem.classList.add('day');
-    dayHabitItem.innerHTML = `<p class="day__number">День ${Number(index) + 1}</p>
+    dayHabitItem.innerHTML = `<p class="day__number">День ${
+      Number(index) + 1
+    }</p>
     <p class="day__comment">${activeHabit.days[index].comment}</p>
     <button type="button" class="day__del" onclick="deleteDay(${index})"></button>`;
     page.content.dayList.appendChild(dayHabitItem);
@@ -99,44 +134,68 @@ function rerender(activeHabitId) {
   if (!activeHabit) {
     return;
   }
+  document.location.replace(document.location.pathname + '#' + activeHabitId);
   rerenderMenu(activeHabit);
   rerenderHeader(activeHabit);
   rerenderContent(activeHabit);
 }
 
-/* work with days */
-// мой первоначальный вариант
-// page.form.button.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   const habitId = +document.querySelector('.habit-list__item--active').getAttribute('habit-id');
-//   const habit = habits.find((element) => element.id === habitId);
-//   if (page.form.input.value) {
-//     habit.days.push({ comment: page.form.input.value });
-//     page.form.input.value = '';
-//   }
-//   rerender(habitId);
-//   saveData();
-// });
+/* work with habit */
+page.addBtn.addEventListener('click', () => {
+  togglePopup();
+});
 
-// добавляет день
-page.form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const data = new FormData(page.form);
-  const comment = data.get('comment');
-  if (!comment) {
-    page.form['comment'].classList.add('error');
-  } else {
-    habits = habits.map((element) => {
-      if (element.id === currentActiveHabbitId) {
-        return {
-          ...element,
-          days: element.days.concat([{ comment }])
-        }
-      }
-      return element;
+page.popup.close.addEventListener('click', () => {
+  togglePopup();
+});
+
+// выбирает иконку для новой привычки
+page.popup.icons.forEach((element) => {
+  element.addEventListener('click', () => {
+    page.popup.icons.forEach((item) => {
+      item.classList.remove('popup__icon-btn--active');
     });
-    page.form['comment'].classList.remove('error');
-    page.form['comment'].value = '';
+    element.classList.add('popup__icon-btn--active');
+    page.popup.form['icon'].value = element.name;
+  });
+});
+
+// добавляет новую привычку
+page.popup.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = validateForm(page.popup.form, ['name', 'icon', 'target']);
+  if (data) {
+    const maxHabitId = habits.reduce((acc, habbit) => acc > habbit.id ? acc : habbit.id, 1);
+    habits.push({
+      id: maxHabitId + 1,
+      icon: data.icon,
+      name: data.name,
+      target: data.target,
+      days: [],
+    });
+    rerender(maxHabitId + 1);
+    togglePopup();
+    resetForm(page.popup.form, ['name', 'target']);
+    saveData();
+  }
+});
+
+/* work with days */
+// добавляет день
+page.content.form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = validateForm(page.content.form, ['comment']);
+  if (data) {
+    habits = habits.map((habit) => {
+      if (habit.id === currentActiveHabbitId) {
+        return {
+          ...habit,
+          days: habit.days.concat([{ comment: data.comment }]),
+        };
+      }
+      return habit;
+    });
+    resetForm(page.content.form, ['comment']);
     rerender(currentActiveHabbitId);
     saveData();
   }
@@ -149,17 +208,23 @@ function deleteDay(index) {
       element.days.splice(index, 1);
       return {
         ...element,
-        days: element.days
-      }
+        days: element.days,
+      };
     }
     return element;
   });
   rerender(currentActiveHabbitId);
   saveData();
-};
+}
 
 /* initialization */
 (() => {
   loadData();
-  rerender(habits.at(-1).id);
+  const habitId = Number(document.location.hash.replace('#', ''));
+  const currentHabit = habits.find(habit => habit.id === habitId);
+  if (currentHabit) {
+    rerender(habitId);
+  } else {
+    rerender(habits.at(-1).id);
+  }
 })();
