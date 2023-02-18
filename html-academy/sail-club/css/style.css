@@ -1,0 +1,155 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #163152;
+  background-color: #fdfdff;
+}
+
+.site-navigation-item a {
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #163152;
+  text-decoration: none;
+}
+
+.hero h1 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 60px;
+  text-transform: uppercase;
+}
+
+.blog-article h2 {
+  font-size: 24px;
+  line-height: 34px;
+  text-decoration: underline;
+  text-decoration-color: #00c6bd;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 15px;
+  text-underline-position: under;
+}
+
+.blog-article-date {
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.news h2 {
+  font-size: 24px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: #00c6bd;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 15px;
+  text-underline-position: under;
+}
+
+.post-img figcaption {
+  font-size: 16px;
+  line-height: 19px;
+  color: #8693a4;
+}
+
+.post h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.post p {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.post h4 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.post ul {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.post ins {
+  text-decoration: none;
+}
+
+.post blockquote {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.post-meta a {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  color: #163152;
+  text-decoration: none;
+}
+
+.post-meta time {
+  font-size: 16px;
+  line-height: 19px;
+  color: #8693a4;
+}
+
+.contacts h2 {
+  font-size: 24px;
+  line-height: 34px;
+  text-decoration: underline;
+  text-decoration-color: #00c6bd;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 15px;
+  text-underline-position: under;
+}
+
+.contact-item {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.contact-item h3 {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.contact-item address {
+  font-style: normal;
+}
+
+.contact-item a {
+  color: #163152;
+  text-decoration: none;
+}
+
+.main-footer {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.footer-navigation-topics {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.footer-navigation-topic h2 {
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.footer-navigation-item a {
+  color: #163152;
+  text-decoration: none;
+}
+
+.policy a {
+  color: #163152;
+  text-decoration: none;
+}
