@@ -5,3 +5,26 @@ html, body{
 .err{
 	outline: 1px solid red;
 }
+
+.input-wrapper {
+  margin: 0 0 16px;
+}
+
+.check {
+  display: block;
+}
+
+.error-message {
+  position: absolute;
+  font-size: 10px;
+  color: red;
+  visibility: hidden;
+}
+.error-message.active {
+  visibility: visible;
+}
+
+.submit {
+  display: block;
+  margin-top: 20px;
+}
