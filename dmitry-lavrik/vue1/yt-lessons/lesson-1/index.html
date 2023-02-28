@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.js"></script>
+    <title>Урок 1</title>
+</head>
+
+<body>
+    <div class="sample">
+        <button v-on:click="showThis = !showThis">{{ btnText }}</button>
+        <input v-show="showThis" type="text" class="text" v-model="name">
+        <h1>Sum: {{ sum }}!</h1>
+        <button v-on:click="addNumber">Add number</button>
+        <ul class="list" v-for="number in numbers">
+            <li class="list-item">{{ number }}</li>
+        </ul>
+    </div>
+
+    <script>
+        let sample = new Vue({
+            el: '.sample',
+            data: {
+                name: '',
+                numbers: [],
+                showThis: true
+            },
+            methods: {
+                addNumber() {
+                    let rnd = Math.floor(Math.random() * 11);
+                    this.numbers.push(rnd);
+                }
+            },
+            computed: {
+                sum() {
+                    let sum = 0;
+                    for(let i = 0; i < this.numbers.length; i++) {
+                        sum += this.numbers[i];
+                    }
+                    return sum;
+                },
+                btnText() {
+                    return this.showThis ? 'Hide input' : 'Show input';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
